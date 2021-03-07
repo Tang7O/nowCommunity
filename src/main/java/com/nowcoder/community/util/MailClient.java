@@ -1,6 +1,5 @@
 package com.nowcoder.community.util;
 
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,8 @@ public class MailClient {
     @Autowired
     private JavaMailSender mailSender;
 
-    private final String from = "tang7o@163.com";
+    @Value("${spring.mail.username}")
+    private  String from;
 
     public void sendMail(String to,String subject,String content){
 
