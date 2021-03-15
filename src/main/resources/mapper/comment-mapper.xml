@@ -11,7 +11,7 @@
         user_id, entity_type, entity_id, target_id, content, status, create_time
     </sql>
    <select id="selectCommentsByEntity" resultType="Comment">
-        select <include refid="selectFields"></include>
+        select <include refid="selectFields"/>
         from comment
         where status = 0
         and entity_type = #{entityType}

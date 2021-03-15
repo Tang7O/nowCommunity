@@ -2,10 +2,12 @@ package com.nowcoder.community;
 
 import com.nowcoder.community.dao.DiscussPostMapper;
 import com.nowcoder.community.dao.LoginTicketMapper;
+import com.nowcoder.community.dao.MessageMapper;
 import com.nowcoder.community.dao.UserMapper;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.entity.Message;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.xml.crypto.Data;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
@@ -29,6 +30,9 @@ public class MapperTests {
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser(){
@@ -87,5 +91,13 @@ public class MapperTests {
         loginTicketMapper.updateStatus(ticket.getTicket(), 1);
         ticket = loginTicketMapper.selectByTicket("asdg");
         System.out.println(ticket);
+    }
+
+    @Test
+    public void testMessage(){
+        List<Message> list = messageMapper.selectConversations(156,0,10);
+        for(Message message : list) {
+            System.out.println(message);
+        }
     }
 }
