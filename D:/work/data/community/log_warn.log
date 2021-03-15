@@ -1,4 +1,0 @@
-2021-03-13 16:50:50,121 WARN [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:61] Unable to start LiveReload server
-2021-03-13 16:50:50,135 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java:590] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
-2021-03-13 17:04:08,729 WARN [main] c.n.c.LoggerTests [LoggerTests.java:24] warn log
-2021-03-13 17:04:36,340 WARN [main] c.n.c.LoggerTests [LoggerTests.java:24] warn log
