@@ -70,7 +70,7 @@ public class DiscussPostController implements CommunityConstant {
         long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, discussPostId);
         model.addAttribute("likeCount", likeCount);
 
-        int likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(user.getId(), ENTITY_TYPE_POST, discussPostId);
+        int likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPostId);
         model.addAttribute("likeStatus", likeStatus);
 
         page.setLimit(5);
@@ -91,7 +91,7 @@ public class DiscussPostController implements CommunityConstant {
                 commentVo.put("likeCount", likeCount);
 
                 likeStatus = hostHolder.getUser() == null ? 0 :
-                        likeService.findEntityLikeStatus(user.getId(), ENTITY_TYPE_COMMENT,comment.getId());
+                        likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT,comment.getId());
                 commentVo.put("likeStatus", likeStatus);
 
                 // 回复列表
@@ -111,7 +111,7 @@ public class DiscussPostController implements CommunityConstant {
                         replyVo.put("likeCount", likeCount);
 
                         likeStatus = hostHolder.getUser() == null ? 0 :
-                                likeService.findEntityLikeStatus(user.getId(), ENTITY_TYPE_COMMENT,reply.getId());
+                                likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT,reply.getId());
                         replyVo.put("likeStatus", likeStatus);
 
                         replyVoList.add(replyVo);

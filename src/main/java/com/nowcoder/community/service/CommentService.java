@@ -42,13 +42,16 @@ public class CommentService implements CommunityConstant {
         comment.setContent(HtmlUtils.htmlEscape(comment.getContent()));
         comment.setContent(sensitiveFilter.filter(comment.getContent()));
         int rows = commentMapper.insertComment(comment);
-        System.out.println(comment);
+
         if (comment.getEntityType() == ENTITY_TYPE_POST) {
             int count = commentMapper.selectCountByEntity(comment.getEntityType(), comment.getEntityId());
-            discussPostService.updateCommentCount(comment.getTargetId(), count);
+            discussPostService.updateCommentCount(comment.getEntityId(), count);
         }
 
         return rows;
     }
 
+    public Comment findCommentById(int id) {
+        return commentMapper.selectCommentById(id);
+    }
 }
