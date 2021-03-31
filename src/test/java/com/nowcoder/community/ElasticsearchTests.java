@@ -115,20 +115,10 @@ public class ElasticsearchTests {
 
         SearchHits<DiscussPost> search = elasticsearchRestTemplate.search(searchQuery, DiscussPost.class);
         List<DiscussPost> list = new ArrayList<>();
+        int i =0;
         for(SearchHit<DiscussPost> hit : search.getSearchHits()) {
-            DiscussPost post = hit.getContent();
-            Map<String , List<String>> highlight = hit.getHighlightFields();
-            if(null != highlight.get("title")) {
-                post.setTitle(highlight.get("title").toString());
-            }
-            if(null != highlight.get("content")) {
-                post.setContent(highlight.get("content").toString());
-            }
-            list.add(post);
+            System.out.println(++i);
         }
-        Page<DiscussPost> page =  new AggregatedPageImpl<>(list);
-        for(DiscussPost post : page) {
-            System.out.println(post);
-        }
+
     }
 }

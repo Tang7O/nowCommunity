@@ -64,6 +64,6 @@ public class ElasticsearchService {
             }
             list.add(post);
         }
-        return new AggregatedPageImpl<>(list);
+        return new AggregatedPageImpl<>(list,PageRequest.of(current,limit),search.getTotalHits());
     }
 }

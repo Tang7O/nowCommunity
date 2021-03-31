@@ -1,5 +1,6 @@
 package com.nowcoder.community.controller;
 
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.Event;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.event.EventProducer;
@@ -32,7 +33,9 @@ public class LikeController implements CommunityConstant {
     @ResponseBody
     public String like(int entityType, int entityId, int entityUserId, int postId) {
         User user = hostHolder.getUser();
-
+        if (user == null) {
+            return CommunityUtil.getJSONString(403, "你还没有登录哦!");
+        }
         // 点赞
         likeService.like(user.getId(), entityType, entityId, entityUserId);
         // 数量
